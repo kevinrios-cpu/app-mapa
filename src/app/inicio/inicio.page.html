@@ -1,12 +1,24 @@
-<ion-header>
-</ion-header>
-
-<ion-content>
-
+  <ion-content>
+    <ion-menu side="start" menuId="first" contentId="main" color="warning">
+      <ion-header color="warning">
+        <ion-toolbar color="warning" class="ion-padding">
+            <ion-avatar slot="end">
+              <img src="/assets/icon/favicon.png">
+            </ion-avatar>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content >
+        <ion-list >
+          <ion-item><ion-buton><ion-icon slot="start" name="bonfire-outline"></ion-icon>Mi Perfil</ion-buton></ion-item>
+          <ion-item><ion-buton><ion-icon slot="start" name="power-outline"></ion-icon>Cerrar Sesión</ion-buton></ion-item>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet id="main"></ion-router-outlet>
   
   <div id="map">
     <ion-toolbar color="withe">
-      <ion-button (click)="mapa2d()" slot="start">
+      <ion-button (click)="mapa2d()" slot="end">
         Presionar para mostrar
         <ion-icon name="mapa"></ion-icon>
       </ion-button>
