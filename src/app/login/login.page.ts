@@ -20,7 +20,7 @@ export class LoginPage implements OnInit {
     public navCtrl: NavController) {
 
     this.formularioLogin = this.fb.group({
-      'patente': new FormControl("",Validators.required),
+      'rut': new FormControl("",Validators.required),
       'password': new FormControl("",Validators.required)
     })
 
@@ -34,7 +34,7 @@ export class LoginPage implements OnInit {
 
     var usuario = JSON.parse(localStorage.getItem('usuario'));
 
-    if(usuario.patente == f.patente && usuario.password == f.password){
+    if(usuario.rut == f.rut && usuario.password == f.password){
       console.log('Ingresado');
       localStorage.setItem('ingresado','true');
       this.navCtrl.navigateRoot('inicio');

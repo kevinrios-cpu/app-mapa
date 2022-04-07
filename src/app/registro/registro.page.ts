@@ -20,7 +20,7 @@ export class RegistroPage implements OnInit {
     public alertController: AlertController,
     public navCtrl: NavController) {
     this.formularioRegistro = this.fb.group({
-      'patente': new FormControl("", Validators.required),
+      'rut': new FormControl("", Validators.required),
       'password': new FormControl("", Validators.required),
       'confirmacionPassword': new FormControl("", Validators.required)
     });
@@ -44,7 +44,7 @@ export class RegistroPage implements OnInit {
     }
 
     var usuario = {
-      patente: f.patente,
+      rut: f.rut,
       password: f.password
     }
 
