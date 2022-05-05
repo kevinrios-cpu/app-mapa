@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        {% block title %}
+        <title>Pagina Principal</title>
+        {% endblock title %}
+        <!--Bootstrap 4-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script></head>
+        <!--API MAPA-->
+        <script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
+        <link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />
+        <!--Estilos Personalizados-->
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+        <!--Efectos Personalizados-->
+        <script type="text/javascript">
+            let mainLocation = window.pageYOffset;
+            window.onscroll = function(){
+            let transition = window.pageYOffset;
+            if(mainLocation >= transition){
+                this.document.getElementById('bar').style.top = '0';
+            }
+            else{
+                this.document.getElementById('bar').style.top = '-100%';
+            }
+            mainLocation = transition;
+            }
+        </script> 
+    <body>
+
+        <div>
+            <nav id="bar">
+                <nav class="navbar navbar-expand-md bg-primary navbar-light h4">
+                    <div class="container">
+                        <a class="navbar-brand icono" href="{% url 'inicio' %}">
+                            {% load static  %}
+                            <img src="{% static 'images/m.png' %}" alt="">
+                        </a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse menu" id="collapsibleNavbar">
+                            <ul class="navbar-nav ml-auto">
+                            <li class="nav-item pl-4">
+                                <a class="nav-link" href="{% url 'inicio' %}">Inicio</a>
+                            </li>
+                            <li class="nav-item pl-4">
+                                <a class="nav-link" href="{% url 'home' %}">Mapa</a>
+                            </li>
+                            <li class="nav-item pl-4">
+                                <a class="nav-link" href="#">Servicios</a>                                                                                  
+                            </li>
+                            <li class="nav-item pl-4">
+                                <a class="nav-link" href="{% url 'sign_in' %}">Inicio de Sesion</a>
+                            </li>       
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <br><br><br><br><br>
+        {% block content %}
+        
+        {% endblock content %}
+    </body>
+    <!--Pie de Pagina-->
+    <footer>
+        <div class="alert-primary p-md-5 mb-5 pt-4 pb-4 mt-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-2">
+                        {% load static %}
+                        <img src="{% static 'images/m.png' %}" style="width: 60%;" alt="Logo Página">
+                    </div>
+                    <div class="col-sm-3 ml-4">
+                        <h3 class="mb-4">Contactanos</h3>
+                        <a  class="h6" href=""><p>miestacionamientyo@parking.cl</p></a>
+                        <a  class="h6" href=""><p>Instagram</p></a>
+                        <a  class="h6" href=""><p>Twitter</p></a>
+                        <a  class="h6" href=""><p>+569 98352712</p></a>
+                    </div>
+                    <div class="col-sm-3 ml-4">
+                        <h3 class="mb-4" >Servicios</h3>
+                        <a  class="h6" href=""><p>Tutoriales</p></a>
+                        <a  class="h6" href=""><p>App Mobile</p></a>
+                        <a  class="h6" href=""><p>Twitter</p></a>
+                        <a  class="h6" href=""><p>+569 98352712</p></a>
+                    </div>
+                    <div class="col-sm-3 ml-4">
+                        <h3 class="mb-4" >Aspectos legales</h3>
+                        <a  class="h6" href=""><p>Politica de privacidad</p></a>
+                        <a  class="h6" href=""><p>Terminos y condiciones de uso</p></a>
+                        <a  class="h6" href=""><p>Twitter</p></a>
+                        <a  class="h6" href=""><p>+569 98352712</p></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</html>

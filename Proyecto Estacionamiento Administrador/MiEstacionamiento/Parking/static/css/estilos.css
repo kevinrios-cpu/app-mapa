@@ -1,0 +1,20 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+nav{
+    font-family: "open sans";
+    width: 100%;
+    position: fixed;
+    transition: top 0.5s;
+    font-size: 20px;
+    z-index: 5;
+}
+
+
+.icono > img{
+    height: 70px;
+    vertical-align: top;
+}

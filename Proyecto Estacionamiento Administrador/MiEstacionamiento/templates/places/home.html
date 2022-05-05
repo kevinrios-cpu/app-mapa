@@ -1,0 +1,30 @@
+{% extends "base_generic.html" %}
+{% block content %}
+{% load crispy_forms_tags %}
+<!--Header-->
+<header class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="header-content-rigth">
+                <br><br>
+                <h1 class="h3 display-4 text-center">Bienvenido a</h1>
+                <h1 class="h3 titulos display-4 text-center">Mi Estacionamiento</h1>
+            </div>
+        </div>
+    </div>
+</header>
+<!--Secciones-->
+<section>
+{% include "places/map.html" %}
+    {% if user.is_superuser %}
+        <!--Formulario-->
+        <form class="container" method='POST'>
+            {% csrf_token %}
+            {{ form|crispy }}
+            <input class="mt-4" type="submit" value="Subir Direccion" />
+        </form>
+    {% endif %}
+</section>
+
+
+{% endblock content %}

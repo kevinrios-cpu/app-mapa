@@ -1,0 +1,32 @@
+{% extends "base_generic.html" %}
+{% block content %}
+<div class="container text-center mt-3 mb-5">
+    {% load static %}
+    <img src="{% static 'images/m.png' %}" style="width:20%;" alt="icono">
+    <P class="display-4">Mi  <img src="{% static 'images/m.png' %}" style="width:50px;" alt="icono"> apa</P>
+</div>
+<div class="container">
+    <div class="row">
+        <div class='card p-5 mb-5 m-auto'>
+            <div class="col-md-12">
+                <form action="" method="POST" >
+                   <div class="form-group">
+                        {% csrf_token %}
+                        <div class="blockquote">
+                            <a href="{% url 'registro'%}"><p class="text-right" style="font-size:15px;">Registrate</p></a>
+                            <h6>Nombre de usuario:</h6>
+                            {{ form.username.errors }}
+                            {{ form.username }}<br><br>
+                            <h6>Contraseña:</h5>
+                            {{ form.password.errors }}
+                            {{ form.password }}
+                            <a href="{% url 'password_reset'%}"><p class="text-right" style="font-size:15px;">Recupera tu contraseña</p></a>
+                        </div>
+                    </div>
+                     <button type="submit" style="margin-top: 20%; margin-bottom: 30%;" class="btn btn-outline-info btn-block">Enviar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
