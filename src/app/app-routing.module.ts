@@ -24,6 +24,11 @@ const routes: Routes = [
     loadChildren: () => import('./inicio/inicio.module').then( m => m.InicioPageModule),
     canActivate: [IngresadoGuard]
   },
+  {
+    path: 'miperfil',
+    loadChildren: () => import('./miperfil/miperfil.module').then( m => m.MiperfilPageModule),
+    canActivate: [IngresadoGuard]
+  },
 ];
 
 @NgModule({
