@@ -1,0 +1,1 @@
+en la carpeta config puedes cambiar los datos para conectarte a otro servidor.
