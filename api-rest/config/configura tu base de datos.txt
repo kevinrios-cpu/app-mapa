@@ -1,0 +1,10 @@
+aca puedes configurar tu base de datos
+
+
+"development": {
+    "username": "nombre",
+    "password": "password",
+    "database": "Ejemplo: xepdb1",
+    "host": "127.0.0.1",
+    "dialect": "Ejemplo: oracle"
+  },
