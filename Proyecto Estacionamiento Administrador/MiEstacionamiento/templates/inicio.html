@@ -1,0 +1,101 @@
+{% extends "base_generic.html" %}
+{% block content %}
+<div class="alert-primary mt-3 p-3 mb-5">
+    <!--Header-->
+    <header class="container mb-5">
+        <div class="row">
+            <div class="col-md-7">
+                <div class="header-content-rigth">
+                    <br><br>
+                    {% load static  %}
+                    <h1 class="h1 display-4 justify-content-center">Bienvenido a</h1>
+                        <strong><P class="display-4">S 
+                        <img src="{% static 'images/m.png' %}" style="width:7%;" alt="icono"> art parking</P></strong></h1>
+                    <br><br><br>
+                    <h1 class="h5 justify-content-center"><b>¿Estas buscando un lugar para estacionar tu automovil?</b></h1>
+                    <h1 class="h5 justify-content-center"><p> </p>Entonces llegaste al lugar correcto, <b>registrate</b> y 
+                                                            podras ver todos los estacionamientos que hay en Santiago
+                                                            junto con sus tarifas, ademas podras pagar por un 
+                                                            estacionamiento a traves de la app.</h1> 
+                </div>
+            </div>
+            
+            <div id="demo" class="carousel slide header-content-rigth col-md-5 " style="z-index: 1;" data-ride="carousel">
+                <br><br>
+                <ul class="carousel-indicators">
+                    <li data-target="1" data-slide-to="0" class="active"></li>
+                    <li data-target="2" data-slide-to="1"></li>
+                    <li data-target="3" data-slide-to="2"></li>
+                </ul>
+                <div class="carousel-inner" >
+                    <div class="carousel-item active">
+                    {% load static %}
+                    <a href="{% url 'home' %}">
+                        <img src="{% static 'images/estacionamiento.jpg' %}" class="rounded" alt="Santiago" width="100%">
+                    </a>
+                    <div class="carousel-caption" >
+                        <h3>Santiago Centro</h3>
+                        <p>¡Buenas tarifas en tu zona!</p>
+                    </div>   
+                    </div>
+                    <div class="carousel-item">
+                    {% load static %}
+                    <a href="{% url 'home' %}">
+                        <img src="{% static 'images/estacionaMaipu.jpg' %}" alt="Maipu" width="100%" height="335px" class="rounded">
+                    </a>
+                    <div class="carousel-caption">
+                        <h3>Maipu</h3>
+                        <p>Variedad de estacionamientos, ¡Encuentralos!</p>
+                    </div>   
+                    </div>
+                    <div class="carousel-item">
+                    {% load static  %}
+                    <img src="{% static 'images/estacionaLasCondes.jpg' %}" alt="Las Condes" width="100%" class="rounded">
+                    <div class="carousel-caption">
+                        <h3>Las Condes</h3>
+                        <p>En la comuna que tu desees</p>
+                    </div>   
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#demo" data-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </a>
+                <a class="carousel-control-next" href="#demo" data-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </a>
+            </div>
+        </div>
+    </header>
+</div>
+<div>
+    <section>
+        <div class="container" style="margin-top:30px">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h2>Encuentralo todo con nuestro mapa</h2>
+                    <h5>Estacionamientos al alcance de tu mano</h5>
+                    {% include "places/map.html" %}
+                    <p>¿Te gusto? Pues registrate y podras adquirir nuestros servicios, Que esperas! .</p>
+                    <h3>Seccion</h3>
+                    <p>contenido o subtitulo.</p>
+                        <a href="">imagen<img src="" alt=""></a>
+                    <hr class="d-sm-none">
+                </div>
+                <div class="col-sm-6">
+                    <h2>Titulo</h2>
+                    <h5>SubTitulo</h5>
+                <div class=""><img src="" alt="">Imagen</div>
+                    <p>Contenido</p>
+                    <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+                    <br>
+                    <h2>TITLE HEADING</h2>
+                    <h5>Title description, Sep 2, 2017</h5>
+                    <div class="fakeimg">Fake Image</div>
+                    <p>Some text..</p>
+                    <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+                </div>
+            </div>
+            </div>
+    </section>
+</div>
+{% endblock content %}

@@ -1,0 +1,41 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>Mi Perfil</ion-title>
+        <ion-buttons slot="start">
+            <ion-menu-button menu="main-menu"></ion-menu-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content color="dark-tint">
+    <ion-card-content>
+      <form [formGroup]="formularioPerfil">
+        <ion-item>
+            <ion-label position="floating">Nombre</ion-label>
+            <ion-input formControlName="name"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label position="floating">Rut</ion-label>
+            <ion-input formControlName="rut"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label position="floating">Contraseña</ion-label>
+            <ion-input formControlName="password" type="password"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Patente</ion-label>
+          <ion-input formControlName="patente"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label position="floating">Foto papeles del auto</ion-label>
+            <br>
+            <ion-input formControlName="foto" type="file"></ion-input>
+          </ion-item>
+      </form>
+      <br>
+      <ion-button color="primary-shade" (click)="guardar()">
+        Ingresar
+      </ion-button>
+    </ion-card-content>
+</ion-content>
+
