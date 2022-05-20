@@ -7,7 +7,56 @@
 
         <a class="links h1" style="margin-bottom: 5%; margin-top: 5%; text-align: center;" href="{% url 'logout' %}">Cerrar Sesion</a>
     {% else %}
-    <a class="links h1" style="margin-bottom: 5%; margin-top: 5%; text-align: center;" href="{% url 'logout' %}">Cerrar Sesion</a>
+    
+    <style> .links:hover {color: #911111; text-decoration: none;} </style>
+    <!--Header-->
+    <header id="home" class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="header-content-rigth">
+                    <br><br>
+                    <h1 class="h3 display-4 text-center">Panel de Administrador</h1>
+                    <h1 class="h3 titulos display-4 text-center">Smart Parking</h1>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-3">
+                <div class="mb-3">
+                    <img class="" src="" style="width: 100%; margin-top: 14px; " alt="Press Start">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <div class="card-body border border-danger text-center mt-5 mb-4">
+                        <div class="form-group">
+                            <label class="h3" style="margin-top: 8%;" for="formGroupExampleInput">Muy buen dia señor/a </label><p class="h3">{{user.username}}</p>
+                            <p class="h3" style="margin-top : 10%; color: #911111;">¿Que desea hacer?</p><hr>
+                            <p class="h3" style="margin-bottom: 5%; color: #911111;">Administración de Usuarios</p>
+                            <a class="links h3" href="{% url 'usuario_create' %}">Registrar Usuarios</a><hr>
+                            <a class="links h3 mb-5" href="{% url 'usuario_list' %}">Actualizar Usuarios</a><hr>
+                            <a class="links h3 mb-5" href="{% url 'usuario_list' %}">Borrar Usuarios</a><hr>
+                            <a class="links h3 mb-5" href="{% url 'usuario_list' %}">Visualizar Usuarios</a><hr>
+                            <p class="h3" style="margin-bottom: 5%; color: #911111;">Administración de Reservas</p>
+                            <a class="links h3" href="{% url 'reserva_create' %}">Registrar Reservas</a><hr>
+                            <a class="links h3" href="{% url 'reserva_list' %}">Actualizar Reservas</a><hr>
+                            <a class="links h3" href="{% url 'reserva_list' %}">Borrar Reservas</a><hr>
+                            <a class="links h3" href="{% url 'reserva_list' %}">Visualizar Reservas</a><hr>
+                        </div>
+                    </div>
+                </form>      
+            </div>
+            <div class="col-md-3">
+                <div class="mb-3">
+                    <img class="" src="" style="width: 100%; margin-top: 10px;" alt="Press Start">
+                </div>
+            </div>
+            <a class="links h1" style="margin-bottom: 5%; margin-top: 5%; text-align: center;" href="{% url 'logout' %}">Cerrar Sesion</a>
+        </div>
+    </div>
     {% endif %}
 {% else %}
 <div class="container text-center mt-3 mb-5">

@@ -1,0 +1,44 @@
+{% extends "base_generic.html" %}
+{% block content %}
+{% if user.is_authenticated  %}{% if user.is_superuser %}
+<style> .links {display: inline-block;}</style>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h1 class="display-2" style="margin-top: 18%;">Detalles Reserva</h1>
+            <form action="" method="POST">
+                {% csrf_token %}
+                <div class="card-body">
+                    <div class="form-group">
+                        <label class="h3" style="margin-top: 8%;" for="formGroupExampleInput">id reserva: </label><p class="h3">{{reserva.id_reserva}}</p>
+                        <label class="h3" style="margin-top: 5%;" for="formGroupExampleInput">fecha reserva: </label><p class="h3">{{reserva.fecha}}</p>
+                        <label class="h3" style="margin-top: 5%;" for="formGroupExampleInput">id cliente: </label><p class="h3">{{reserva.usuario_rut_user}}</p>
+                        <label class="h3" style="margin-top: 5%;" for="formGroupExampleInput">id estacionamiento: </label><p class="h3" style="margin-bottom: 5%;">{{reserva.estacionamiento}}</p>
+                        <a class="links h3 btn btn-danger btn-lg mr-3" href="{% url 'reserva_delete' pk=reserva.id_reserva %}">Eliminar</a>
+                        <a class="links h3 btn btn-danger btn-lg" href="{% url 'reserva_update' pk=reserva.id_reserva %}">Actualizar</a>
+                    </div>
+                </div>
+            </form>      
+        </div>
+    </div>
+</div>
+{% endif %}
+{% else %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <form action="" method="POST">
+                {% csrf_token %}
+                <div class="card-body">
+                    <div class="form-group">
+                        <label class="display-4" style="margin-top: 18%; margin-bottom: 10%;" for="formGroupExampleInput">¡¡¡ERROR; DEBE SER UN USUARIO STAFF!!!</label>
+                        <p class="h1"><em>401</em></p>
+                        <p class="h3" style="margin-bottom: 10%;"><em>Unauthorized :(</em></p>
+                    </div>
+                </div>
+            </form>      
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends "base_generic.html" %}
+{% block content %}
+{% if user.is_authenticated  %}{% if user.is_superuser %}
+<style> .links {display: inline-block;}</style>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h1 class="display-2" style="margin-top: 18%;">Detalles Uusuario</h1>
+            <form action="" method="POST">
+                {% csrf_token %}
+                <div class="card-body">
+                    <div class="form-group">
+                        <label class="h3" style="margin-top: 8%;" for="formGroupExampleInput">Nombre del Usuario: </label><p class="h3">{{usuario.pnombre}}</p>
+                        <label class="h3" style="margin-top: 5%;" for="formGroupExampleInput">Correo electronico: </label><p class="h3">{{usuario.gmail}}</p>
+                        <label class="h3" style="margin-top: 5%;" for="formGroupExampleInput">Apellido paterno: </label><p class="h3">{{usuario.apaterno}}</p>
+                        <label class="h3" style="margin-top: 5%;" for="formGroupExampleInput">Patente del vehiculo: </label><p class="h3" style="margin-bottom: 5%;">{{usuario.vehiculo_patente}}</p>
+                        <a class="links h3 btn btn-danger btn-lg mr-3" href="{% url 'usuario_delete' pk=usuario.rut_user %}">Eliminar</a>
+                        <a class="links h3 btn btn-danger btn-lg" href="{% url 'usuario_update' pk=usuario.rut_user %}">Actualizar</a>
+                    </div>
+                </div>
+            </form>      
+        </div>
+    </div>
+</div>
+{% endif %}
+{% else %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <form action="" method="POST">
+                {% csrf_token %}
+                <div class="card-body">
+                    <div class="form-group">
+                        <label class="display-4" style="margin-top: 18%; margin-bottom: 10%;" for="formGroupExampleInput">¡¡¡ERROR; DEBE SER UN USUARIO STAFF!!!</label>
+                        <p class="h1"><em>401</em></p>
+                        <p class="h3" style="margin-bottom: 10%;"><em>Unauthorized :(</em></p>
+                    </div>
+                </div>
+            </form>      
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endblock %}
