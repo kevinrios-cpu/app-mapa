@@ -2,7 +2,7 @@ const Sequelize = require('sequelize-oracle');
 
 module.exports = (sequelize, DataType) => {
     return sequelize.define('parking_user', {
-        id: {
+        ID: {
             type: Sequelize.INTEGER,
             autoIncrement: true,
             primaryKey: true
