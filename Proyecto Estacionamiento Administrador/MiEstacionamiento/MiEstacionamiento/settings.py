@@ -79,11 +79,12 @@ WSGI_APPLICATION = 'MiEstacionamiento.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-
+host = '44.203.171.57'
+port = '1521'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.oracle',
-        'NAME': '18.234.103.212:1521/xe',
+        'NAME': host+':'+port+'/xe',
         'USER': 'estacionamiento',
         'PASSWORD': '1234',
     }

@@ -60,9 +60,9 @@ class Direccion(models.Model):
 class Duenno(models.Model):
     rut_duenno = models.IntegerField(primary_key=True)
     dv = models.CharField(max_length=1)
-    pnombre = models.CharField(max_length=30)
+    pnombre = models.CharField(max_length=30, null=False,blank=False)
     snombre = models.CharField(max_length=30, blank=True, null=True)
-    apaterno = models.CharField(max_length=30)
+    apaterno = models.CharField(max_length=30, null=False,blank=False)
     amaterno = models.CharField(max_length=30)
     telefono = models.IntegerField(blank=True, null=True)
 
@@ -72,19 +72,9 @@ class Duenno(models.Model):
         return f'{self.pnombre},{self.rut_duenno}'
 
 
-
-
-
-
-
-
-
-
-
-
 class Marca(models.Model):
     id_marca = models.IntegerField(primary_key=True)
-    nom_marca = models.CharField(max_length=40)
+    nom_marca = models.CharField(max_length=40, null=False,blank=False)
 
 
     def __str__(self):
@@ -93,9 +83,9 @@ class Marca(models.Model):
 
 class Modelo(models.Model):
     id_modelo = models.IntegerField(primary_key=True)
-    nom_modelo = models.CharField(max_length=50)
-    annio = models.IntegerField()
-    marca_id_marca = models.ForeignKey(Marca, models.DO_NOTHING, db_column='marca_id_marca')
+    nom_modelo = models.CharField(max_length=50, null=False,blank=False)
+    annio = models.IntegerField(null=False,blank=False)
+    marca_id_marca = models.ForeignKey(Marca, models.DO_NOTHING, null=False,blank=False,db_column='marca_id_marca')
 
     class Meta:
 
@@ -107,19 +97,19 @@ class Modelo(models.Model):
 
 class Puesto(models.Model):
     id_puesto = models.IntegerField(primary_key=True)
-    letra_puesto = models.CharField(max_length=2)
-    num_puesto = models.IntegerField()
-    sucursal_est = models.ForeignKey('SucursalEst', models.DO_NOTHING)
+    letra_puesto = models.CharField(max_length=2, null=False,blank=False)
+    num_puesto = models.IntegerField(null=False,blank=False)
+    sucursal_est = models.ForeignKey('SucursalEst', models.DO_NOTHING, null=False,blank=False)
 
     def __str__(self):
         return f'{self.id_puesto},{self.letra_puesto}{self.num_puesto}'
 
 class Reserva(models.Model):
     id_reserva = models.BigIntegerField(primary_key=True)
-    usuario = models.ForeignKey('Usuario', models.DO_NOTHING,related_name='patente', db_column='usr_vehiculo_pat')
-    fecha = models.DateField()
-    hora_desde = models.TimeField()
-    hora_hasta = models.TimeField()
+    usuario = models.ForeignKey('Usuario', models.DO_NOTHING,related_name='patente', null=False,blank=False,db_column='usr_vehiculo_pat')
+    fecha = models.DateField(null=False,blank=False)
+    hora_desde = models.TimeField(null=False,blank=False)
+    hora_hasta = models.TimeField(null=False,blank=False)
     estacionamiento = models.ForeignKey('Puesto', models.DO_NOTHING)
 
 
@@ -133,10 +123,10 @@ class Reserva(models.Model):
 
 class SucursalEst(models.Model):
     id = models.IntegerField(primary_key=True)
-    direccion_lugar = models.OneToOneField(Direccion, models.DO_NOTHING, db_column='direccion_lugar')
-    nom_sucursal = models.CharField(max_length=30)
-    fono_suc = models.IntegerField()
-    admin = models.ForeignKey(Admin, models.DO_NOTHING, db_column='admin_id_adm')
+    direccion_lugar = models.OneToOneField(Direccion, models.DO_NOTHING,null=False,blank=False, db_column='direccion_lugar')
+    nom_sucursal = models.CharField(max_length=30,null=False,blank=False)
+    fono_suc = models.IntegerField(null=False,blank=False)
+    admin = models.ForeignKey(Admin, models.DO_NOTHING, null=False,blank=False,db_column='admin_id_adm')
 
 
 
@@ -176,10 +166,10 @@ class Usuario(models.Model):
 
 class Vehiculo(models.Model):
     patente = models.CharField(primary_key=True, max_length=8)
-    modelo = models.ForeignKey(Modelo, models.DO_NOTHING, db_column='modelo_id_modelo')
-    marca = models.ForeignKey(Marca, models.DO_NOTHING, default=1)
-    duenno = models.ForeignKey(Duenno, models.DO_NOTHING, related_name='rut_dueño',db_column='dueño_rut_dueño')
-    color = models.CharField(max_length=25)
+    modelo = models.ForeignKey(Modelo, models.DO_NOTHING,null=False,blank=False, db_column='modelo_id_modelo')
+    marca = models.ForeignKey(Marca, models.DO_NOTHING, default=1, null=False,blank=False)
+    duenno = models.ForeignKey(Duenno, models.DO_NOTHING, related_name='rut_dueño',null=False,blank=False,db_column='dueño_rut_dueño')
+    color = models.CharField(max_length=25,null=False,blank=False)
     num_ruedas = models.BooleanField()
 
 
