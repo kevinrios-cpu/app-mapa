@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'MiEstacionamiento.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-host = '44.203.171.57'
+host = '3.82.110.216'
 port = '1521'
 DATABASES = {
     'default': {

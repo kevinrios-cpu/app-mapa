@@ -1,15 +1,21 @@
 {% extends "base_generic.html" %}
 {% block content %}
 {% if user.is_authenticated  %}{% if user.is_superuser %}
+<style> .links {display: inline-block;}</style>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+            <h1 class="display-2" style="margin-top: 18%;">Detalles Sucursal</h1>
             <form action="" method="POST">
                 {% csrf_token %}
                 <div class="card-body">
                     <div class="form-group">
-                        <label class="display-4" style="margin-top: 18%;" for="formGroupExampleInput">¿Esta seguro que desea borrar la reserva: </label><p class="display-4">{{reserva.id_reserva}}?</p>
-                        <button type="submit" style="margin-top: 8%; margin-bottom: 12%;" class="btn btn-outline-danger btn-block">Borrar</button>
+                        <label class="h3" style="margin-top: 8%;" for="formGroupExampleInput">id sucursal: </label><p class="h3">{{sucursalest.id_suc}}</p>
+                        <label class="h3" style="margin-top: 8%;" for="formGroupExampleInput">Direccion: </label><p class="h3">{{sucursalest.direccion_lugar}}</p>
+                        <label class="h3" style="margin-top: 5%;" for="formGroupExampleInput">Nombre sucursal: </label><p class="h3">{{sucursalest.nom_sucursal}}</p>
+                        <label class="h3" style="margin-top: 5%;" for="formGroupExampleInput">Fono Sucursal: </label><p class="h3">{{sucursalest.fono_suc}}</p>
+                        <a class="links h3 btn btn-danger btn-lg mr-3" href="{% url 'sucursal_delete' pk=sucursalest.id_suc %}">Eliminar</a>
+                        <a class="links h3 btn btn-danger btn-lg" href="{% url 'sucursal_update' pk=sucursalest.id_suc %}">Actualizar</a>
                     </div>
                 </div>
             </form>      

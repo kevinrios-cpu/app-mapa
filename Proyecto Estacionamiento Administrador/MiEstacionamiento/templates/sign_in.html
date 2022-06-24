@@ -13,7 +13,7 @@
     <header id="home" class="container">
         <div class="row">
             <div class="col-md-12">
-                <div class="header-content-rigth">
+                <div class="header-content-rigth p-md-5">
                     <br><br>
                     <h1 class="h3 display-4 text-center">Panel de Administrador</h1>
                     <h1 class="h3 titulos display-4 text-center">Smart Parking</h1>
@@ -21,42 +21,189 @@
             </div>
         </div>
     </header>
+    
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-3">
-                <div class="mb-3">
-                    <img class="" src="" style="width: 100%; margin-top: 14px; " alt="Press Start">
-                </div>
+        <div id="accordion">
+        <div class="card">
+            <div class="card-header">
+            <a class="card-link" data-toggle="collapse" href="#collapseOne">
+                <p class="h1 text-center">Administracion de Usuarios</p>
+            </a>
             </div>
-            <div class="col-md-6">
-                <form action="" method="POST">
-                    {% csrf_token %}
-                    <div class="card-body border border-danger text-center mt-5 mb-4">
-                        <div class="form-group">
-                            <label class="h3" style="margin-top: 8%;" for="formGroupExampleInput">Muy buen dia señor/a </label><p class="h3">{{user.username}}</p>
-                            <p class="h3" style="margin-top : 10%; color: #911111;">¿Que desea hacer?</p><hr>
-                            <p class="h3" style="margin-bottom: 5%; color: #911111;">Administración de Usuarios</p>
-                            <a class="links h3" href="{% url 'usuario_create' %}">Registrar Usuarios</a><hr>
-                            <a class="links h3 mb-5" href="{% url 'usuario_list' %}">Actualizar Usuarios</a><hr>
-                            <a class="links h3 mb-5" href="{% url 'usuario_list' %}">Borrar Usuarios</a><hr>
-                            <a class="links h3 mb-5" href="{% url 'usuario_list' %}">Visualizar Usuarios</a><hr>
-                            <p class="h3" style="margin-bottom: 5%; color: #911111;">Administración de Reservas</p>
-                            <a class="links h3" href="{% url 'reserva_create' %}">Registrar Reservas</a><hr>
-                            <a class="links h3" href="{% url 'reserva_list' %}">Actualizar Reservas</a><hr>
-                            <a class="links h3" href="{% url 'reserva_list' %}">Borrar Reservas</a><hr>
-                            <a class="links h3" href="{% url 'reserva_list' %}">Visualizar Reservas</a><hr>
-                        </div>
+            <div id="collapseOne" class="collapse" data-parent="#accordion">
+            <div class="card-body">
+                <div class="row ">
+                    <div class="col-3"></div>
+                    <div class="col-3 text-center">
+                        <p class="h5">Registrar Usuario</p>
                     </div>
-                </form>      
-            </div>
-            <div class="col-md-3">
-                <div class="mb-3">
-                    <img class="" src="" style="width: 100%; margin-top: 10px;" alt="Press Start">
+                    <div class="col-2">
+                        <a href="{% url 'usuario_create' %}"><button class="btn btn-outline-success text-center" ><p class="h6">Seleccionar</p></button> </a>
+                    </div>        
+                </div>
+                <div class="row">
+                    <div class="col-3"></div>
+                    <div class="col-3 text-center" >
+                        <p class="h5">Actualizar/Borrar Usuario</p> 
+                    </div>
+                    <div class="col-2">
+                        <a href="{% url 'usuario_list' %}"><button class="btn btn-outline-warning text-center" ><p class="h6">Seleccionar</p></button> </a>
+                    </div>        
                 </div>
             </div>
-            <a class="links h1" style="margin-bottom: 5%; margin-top: 5%; text-align: center;" href="{% url 'logout' %}">Cerrar Sesion</a>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+            <a class="collapsed card-link" data-toggle="collapse" href="#collapseTwo">
+                <p class="h1 text-center">Administracion de Reservas</p>
+            </a>
+            </div>
+            <div id="collapseTwo" class="collapse" data-parent="#accordion">
+            <div class="card-body">
+                <div class="row ">
+                    <div class="col-3"></div>
+                    <div class="col-3 text-center">
+                        <p class="h5" >Registrar Reserva</p>
+                    </div>
+                    <div class="col-2">
+                        <a href="{% url 'reserva_create' %}"><button class="btn btn-outline-success text-center" ><p class="h6">Seleccionar</p></button> </a>
+                    </div>        
+                </div>
+                <div class="row">
+                    <div class="col-3"></div>
+                    <div class="col-3 text-center" >
+                        <p class="h5">Actualizar Reserva</p> 
+                    </div>
+                    <div class="col-2">
+                        <a href="{% url 'reserva_list' %}"><button class="btn btn-outline-warning text-center" ><p class="h6">Seleccionar</p></button> </a>
+                    </div>        
+                </div>
+            </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+            <a class="collapsed card-link" data-toggle="collapse" href="#collapseThree">
+                <p class="h1 text-center">Administracion de Sucursales </button></p>
+            </a>
+            </div>
+            <div id="collapseThree" class="collapse " data-parent="#accordion">
+            <div class="card-body">
+                <div class="row ">
+                    <div class="col-3"></div>
+                    <div class="col-3 text-center">
+                        <p class="h5">Registrar Sucursal</p>
+                    </div>
+                    <div class="col-2">
+                        <a href="{% url 'sucursal_create' %}"><button class="btn btn-outline-success text-center"><p class="h6">Seleccionar</p></button></a>
+                    </div>        
+                </div>
+                <div class="row">
+                    <div class="col-3"></div>
+                    <div class="col-3 text-center" >
+                        <p class="h5">Actualizar/Borrar Sucursal</p> 
+                    </div>
+                    <div class="col-2">
+                        <a href="{% url 'sucursal_list' %}"><button class="btn btn-outline-warning text-center" ><p class="h6">Seleccionar</p></button> </a>
+                    </div>        
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+            <a class="collapsed card-link" data-toggle="collapse" href="#collapseFour">
+                <p class="h1 text-center">Administracion de Direcciones</button></p>
+            </a>
+            </div>
+            <div id="collapseFour" class="collapse " data-parent="#accordion">
+            <div class="card-body">
+                <div class="row ">
+                    <div class="col-3"></div>
+                    <div class="col-3 text-center">
+                        <p class="h5">Registrar Direccion</p>
+                    </div>
+                    <div class="col-2">
+                        <a href="{% url 'home' %}"><button class="btn btn-outline-success text-center"><p class="h6">Seleccionar</p></button></a>
+                    </div>        
+                </div>
+                <div class="row">
+                    <div class="col-3"></div>
+                    <div class="col-3 text-center" >
+                        <p class="h5">Actualizar/Borrar Direccion</p> 
+                    </div>
+                    <div class="col-2">
+                        <a href="{% url 'place_list' %}"><button class="btn btn-outline-warning text-center" ><p class="h6">Seleccionar</p></button> </a>
+                    </div>        
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+            <a class="collapsed card-link" data-toggle="collapse" href="#collapseFive">
+                <p class="h1 text-center">Administracion de Puestos</button></p>
+            </a>
+            </div>
+            <div id="collapseFive" class="collapse " data-parent="#accordion">
+            <div class="card-body">
+                <div class="row ">
+                    <div class="col-3"></div>
+                    <div class="col-3 text-center">
+                        <p class="h5">Registrar Puesto</p>
+                    </div>
+                    <div class="col-2">
+                        <a href="{% url 'puesto_create' %}"><button class="btn btn-outline-success text-center"><p class="h6">Seleccionar</p></button></a>
+                    </div>        
+                </div>
+                <div class="row">
+                    <div class="col-3"></div>
+                    <div class="col-3 text-center" >
+                        <p class="h5">Actualizar/Borrar Puesto</p> 
+                    </div>
+                    <div class="col-2">
+                        <a href="{% url 'puesto_list' %}"><button class="btn btn-outline-warning text-center" ><p class="h6">Seleccionar</p></button> </a>
+                    </div>        
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+            <a class="collapsed card-link" data-toggle="collapse" href="#collapseSix">
+                <p class="h1 text-center">Administracion de Modelos</button></p>
+            </a>
+            </div>
+            <div id="collapseSix" class="collapse" data-parent="#accordion">
+            <div class="card-body">
+                <div class="row ">
+                    <div class="col-3"></div>
+                    <div class="col-3 text-center">
+                        <p class="h5">Registrar Modelo</p>
+                    </div>
+                    <div class="col-2">
+                        <a href="{% url 'modelo_create' %}"><button class="btn btn-outline-success text-center"><p class="h6">Seleccionar</p></button></a>
+                    </div>        
+                </div>
+                <div class="row">
+                    <div class="col-3"></div>
+                    <div class="col-3 text-center" >
+                        <p class="h5">Actualizar/Borrar Modelo</p> 
+                    </div>
+                    <div class="col-2">
+                        <a href="{% url 'modelo_list' %}"><button class="btn btn-outline-warning text-center" ><p class="h6">Seleccionar</p></button> </a>
+                    </div>        
+                </div>
+            </div>
         </div>
     </div>
+</div>
+</div>
+</div>
+
+        <div class="container text-center p-md-5">
+            <a class="links h1 danger" href="{% url 'logout' %}">Cerrar Sesion</a>
+        </div>
+  </div>
+  
     {% endif %}
 {% else %}
 <div class="container text-center mt-3 mb-5">

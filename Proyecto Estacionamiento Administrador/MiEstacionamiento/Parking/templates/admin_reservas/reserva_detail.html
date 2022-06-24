@@ -12,7 +12,7 @@
                     <div class="form-group">
                         <label class="h3" style="margin-top: 8%;" for="formGroupExampleInput">id reserva: </label><p class="h3">{{reserva.id_reserva}}</p>
                         <label class="h3" style="margin-top: 5%;" for="formGroupExampleInput">fecha reserva: </label><p class="h3">{{reserva.fecha}}</p>
-                        <label class="h3" style="margin-top: 5%;" for="formGroupExampleInput">id cliente: </label><p class="h3">{{reserva.usuario_rut_user}}</p>
+                        <label class="h3" style="margin-top: 5%;" for="formGroupExampleInput">id cliente: </label><p class="h3">{{reserva.usuario}}</p>
                         <label class="h3" style="margin-top: 5%;" for="formGroupExampleInput">id estacionamiento: </label><p class="h3" style="margin-bottom: 5%;">{{reserva.estacionamiento}}</p>
                         <a class="links h3 btn btn-danger btn-lg mr-3" href="{% url 'reserva_delete' pk=reserva.id_reserva %}">Eliminar</a>
                         <a class="links h3 btn btn-danger btn-lg" href="{% url 'reserva_update' pk=reserva.id_reserva %}">Actualizar</a>

@@ -26,8 +26,6 @@ class Ciudad(models.Model):
     id_ciudad = models.IntegerField(primary_key=True)
     nom_ciudad = models.CharField(max_length=40)
 
-
-
     def __str__(self):
         return f'{self.nom_ciudad}'
 
@@ -42,6 +40,7 @@ class Comuna(models.Model):
         return f'{self.nom_comuna}'
         
 class Direccion(models.Model):
+    id = models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')
     lugar = models.CharField(max_length=100)
     latitud = models.FloatField(blank=True, null=True)
     longitud = models.FloatField(blank=True, null=True)
@@ -56,6 +55,9 @@ class Direccion(models.Model):
     def __str__(self):
         return self.lugar
 
+    def get_absolute_url(self):
+        
+        return reverse('place_detail', args=[str(self.id)])
 
 class Duenno(models.Model):
     rut_duenno = models.IntegerField(primary_key=True)
@@ -93,6 +95,10 @@ class Modelo(models.Model):
     
     def __str__(self):
         return f'{self.nom_modelo}'
+    
+    def get_absolute_url(self):
+        
+        return reverse('modelo_detail', args=[str(self.id_modelo)])
 
 
 class Puesto(models.Model):
@@ -103,6 +109,10 @@ class Puesto(models.Model):
 
     def __str__(self):
         return f'{self.id_puesto},{self.letra_puesto}{self.num_puesto}'
+    
+    def get_absolute_url(self):
+        
+        return reverse('puesto_detail', args=[str(self.id_puesto)])
 
 class Reserva(models.Model):
     id_reserva = models.BigIntegerField(primary_key=True)
@@ -122,25 +132,23 @@ class Reserva(models.Model):
         return reverse('reserva_detail', args=[str(self.id_reserva)])
 
 class SucursalEst(models.Model):
-    id = models.IntegerField(primary_key=True)
-    direccion_lugar = models.OneToOneField(Direccion, models.DO_NOTHING,null=False,blank=False, db_column='direccion_lugar')
+    id_suc = models.IntegerField(primary_key=True)
+    direccion_lugar = models.ForeignKey(Direccion, models.DO_NOTHING, db_column='direccion_lugar')
     nom_sucursal = models.CharField(max_length=30,null=False,blank=False)
     fono_suc = models.IntegerField(null=False,blank=False)
-    admin = models.ForeignKey(Admin, models.DO_NOTHING, null=False,blank=False,db_column='admin_id_adm')
-
-
-
+    admin = models.ForeignKey(Admin, models.DO_NOTHING, db_column='admin_id_adm')
+    
     def __str__(self):
-        return f'{self.nom_sucursal}'
+        return f'{self.id_suc,self.nom_sucursal}'
     
     def get_absolute_url(self):
-        
-        return reverse('usuario_detail', args=[str(self.id)])
+        return reverse('sucursal_detail', args=[str(self.id_suc)])
 
 
 class Usuario(models.Model):
     rut_user = models.IntegerField(primary_key=True)
     dv = models.CharField(max_length=1)
+    #img_perfil = models.ImageField()
     nom_user = models.CharField(max_length=30, null=False)
     password = models.CharField(max_length=30,  null=False)
     vehiculo_patente = models.ForeignKey('Vehiculo', models.DO_NOTHING, db_column='vehiculo_patente')
